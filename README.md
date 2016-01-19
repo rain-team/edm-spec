@@ -32,7 +32,7 @@
 
 使用简单的嵌套 `<table>`，提高邮件在各大客户端的兼容性。
 ```html
-<table border="0"  cellpadding="0"  cellspacing="0"> 
+<table border="0"  cellpadding="0"  cellspacing="0">
     <tr>
       <td style="text-align:left;">左侧</td>
       <td style="text-align:right;">右侧</td>
@@ -51,10 +51,10 @@
 比如要实现一个 1:1:2 的布局：
 
 ```html
-<table border="0"  cellpadding="0"  cellspacing="0"> 
+<table border="0"  cellpadding="0"  cellspacing="0">
     <tr>
       <td>
-         <table border="0"  cellpadding="0"  cellspacing="0"> 
+         <table border="0"  cellpadding="0"  cellspacing="0">
             <tr>
               <td>1</td>
               <td>1</td>
@@ -96,9 +96,9 @@ width height 属性中不要设置 `px` ，会在 outlook 失效
 **此链接只适用于 http://www.emailcar.net**
 
 ```html
-<%=unsubscribe%>   退订变量
-<%=complaints%>    投诉变量
-<%=tplview%>       预览变量
+&lt;%=unsubscribe%&gt;   退订变量
+&lt;%=complaints%&gt;    投诉变量
+&lt;%=tplview%&gt;       预览变量
 ```
 
 ## 插入视频
@@ -133,3 +133,39 @@ width height 属性中不要设置 `px` ，会在 outlook 失效
 2. 背景图片也不兼容。outlook支持纯色
 3. css必须在行间，在头部不支持
 4. outlokk有默认的line-height，自己设置line-height无效（在切图的时候要注意多预留空隙）
+
+
+## Outlook建议写法
+1. 建议
+  - 给`<tr>、<td>`加背景颜色（如果有背景图片，需截取和背景色相仿的颜色做背景色）
+    不提倡用：`<td background="#f4f4f4">`
+    建议用法：`<td  style="background-color:#f0f0f0;">`
+  - 给文字模块的<table>加属性`cursor: default;`
+  - 由于outlook自带line-height,会造成文字高度溢出。
+    对大段文字用div了拆分每一行，用div的height来控制行高，不依赖自动换行，更加精确。
+    例子（经典的三格布局）：
+``` css
+<tr>
+		<td>
+			<table>
+				<tbody>
+					<tr>
+						<td>
+							<img src="" style="display:block; padding:0px; border:0px; margin:0px;" />
+						</td>
+				        <td style="background-color:#f4f4f4;">
+							<div style="width:608px;height:84px;color:#2c2c2c;font-family:Microsoft Yahei; font-size:14px;line-height: 28px;padding:0; margin:0; border:0px;">
+								<div style="width:608px;height:28px;padding:0; margin:0; border:0px;">第一行文字</div>
+								<div style="width:608px;height:28px;padding:0; margin:0; border:0px;">第二行文字</div>
+								<div style="width:608px;height:28px;padding:0; margin:0; border:0px;">第三行文字</div>
+							</div>
+						</td>
+						<td>
+							<img src="" style="display:block; padding:0px; border:0px; margin:0px;" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</td>
+	</tr>
+```
