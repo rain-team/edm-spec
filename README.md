@@ -132,8 +132,8 @@ width height 属性中不要设置 `px` ，会在 outlook 失效
 1. padding需要写在<td>上，写在其它地方无效。
 2. 背景图片也不兼容。outlook支持纯色
 3. css必须在行间，在头部不支持
-4. outlokk有默认的line-height，自己设置line-height无效（在切图的时候要注意多预留空隙）
-
+4. Outloo k有默认的line-height，自己设置line-height无效（在切图的时候要注意多预留空隙）
+5. Outlook Web App 中 `<img />` 标签的 `style=""` 样式会被全部清除，如果要兼容 Outlook Web App 需要考虑 img 无样式时候是否显示正常
 
 ## Outlook建议写法
 1. 建议
